@@ -1,5 +1,6 @@
 table {
   margin: 0 auto;
+  border-collapse: collapse;
 }
 
 th {
@@ -18,6 +19,6 @@ th, td {
 }
 
 body {
-  background-image: url("https://x86.co.kr/files/attach/images/4439914/561/100/005/3eb1966e9e13dd661841bcc23827e867.jpg");
+  background-image: url("http://file.didwallpaper.com/DataBank/upload/2006_5/images/6584-1(9).gif");
   background-size:cover;
 }

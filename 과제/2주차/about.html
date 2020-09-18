@@ -133,13 +133,13 @@
       <fieldset>
         <legend>개인정보</legend>
         <div class="name">
-          <p>이름</p>
-          <input type="text" name="name" value="">
+          <label for="inputName">이름</label>
+          <input type="text" id="inputName" name="name" value="">
         </div>
         <br>
         <div class="s">
-          <p>전공</p>
-          <select class="s" name="major">
+          <label for="major">전공</label>
+          <select id="major" name="major">
             <option value="computer">컴퓨터공학과</option>
             <option value="construct">건축학과</option>
             <option value="electronic">전자과</option>
@@ -147,10 +147,15 @@
         </div>
         <br>
         <div class="hobby">
-          <p>취미</p>
-          <input type="checkbox" name="hobby" value="swim">수영
-          <input type="checkbox" name="hobby" value="golf">골프
-          <input type="checkbox" name="hobby" value="soccer">축구
+          <span>취미</span>
+          <input type="checkbox" id="swim" name="hobby" value="swim">
+          <label for="swim">수영</label>
+
+          <input type="checkbox" id="golf" name="hobby" value="golf">
+          <label for="golf">골프</label>
+
+          <input type="checkbox" id="soccer" name="hobby" value="soccer">
+          <label for="soccer">축구</label>
         </div>
         <br>
         <div class="textarea">
@@ -160,8 +165,6 @@
           <input type="submit" name="submit" value="submit">
         </div>
       </fieldset>
-
-
     </form>
   </body>
 </html>
