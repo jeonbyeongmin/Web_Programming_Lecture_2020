@@ -1,0 +1,23 @@
+table {
+  margin: 0 auto;
+}
+
+th {
+  background: green;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
+table, th, td {
+  border: 5px groove #ddd;
+}
+
+th, td {
+  padding: 20px;
+}
+
+body {
+  background-image: url("https://x86.co.kr/files/attach/images/4439914/561/100/005/3eb1966e9e13dd661841bcc23827e867.jpg");
+  background-size:cover;
+}
