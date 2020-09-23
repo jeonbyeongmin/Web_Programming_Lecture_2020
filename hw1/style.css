@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+div.shopping-section {
+
+  border: 3px solid #73AD21;
+  width: 1000px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.cart-button {
+  padding: 10px;
+  background-color: transparent;
+  border-style: none;
+}
+
+.material-icons{
+  color : blue;
+}
