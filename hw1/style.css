@@ -1,12 +1,7 @@
-* {
-  margin: 0;
-  padding: 0;
-}
 
-div.shopping-section {
-
+.shopping-section {
   border: 3px solid #73AD21;
-  width: 1000px;
+  width: 75%;
   height: auto;
   margin: 0 auto;
 }
@@ -19,4 +14,46 @@ div.shopping-section {
 
 .material-icons{
   color : blue;
+}
+
+
+.form-popup {
+  display: none;
+  position: fixed;
+  border-width: : 2px;
+  border-style: outset;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.form-container {
+  width: 400px;
+  height: 250px;
+  padding: 30px;
+  background-color: skyblue;
+}
+
+
+.form-container h1{
+  font-size: 20px;
+  color: blue;
+}
+
+
+
+/*********** table ****************/
+
+table {
+  border-collapse: collapse;
+
+}
+
+.shopping-bag tr, th, td {
+  border: 1px solid black;
+  text-align: center;
+  font-family: "arial, sans-serif"
+}
+
+th, td {
+  padding: 10px;
 }

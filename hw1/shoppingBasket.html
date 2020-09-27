@@ -5,17 +5,119 @@
     <title>Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
+
     <div class="shopping-section">
-      <button class="cart-button"><i class="material-icons">shopping_cart</i></button>
+      <button class="cart-button" onclick="openForm()"><i class="material-icons">shopping_cart</i></button>
+      <div class="form-popup" id="myForm">
+        <form action="" class="form-container">
+          <h1>상품 장바구니 등록</h1>
+          <label for="products-image">상품 이미지 : </label>
+          <input type="file" id="products-image" name="products-image">
+          <br>
+          <label for="products-name">상품 이름 : </label>
+          <input type="text" id="products-name" name="products-name" required>
+          <br>
+          <label for="products-price">상품 가격 : </label>
+          <input size="10" type="text" id="products-price" name="products-price" required>
+          <br>
+          <label for="products-count">상품 개수 : </label>
+          <input size="5" type="text" id="products-count" name="products-count" required>
+          <span>최대 50이하까지 선택가능</span>
+          <br>
+          <label for="delivery-type">배송 방법 : </label>
+          <input type="radio" id="normal-delivery" name="delivery-type" value="normal-delivery">
+          <label for="normal-delivery">일반 배송</label>
+          <input type="radio" id="early-morning-delivery" name="delivery-type" value="early-morning-delivery">
+          <label for="early-morning-delivery">새벽 배송</label>
+          <br>
+          <br>
+          <button type="submit">장바구니 담기</button>
+          <button type="button" onclick="closeForm()">취소</button>
+        </form>
+      </div>
     </div>
-    <div class="diliver-section">
 
+    <br>
+    <br>
+    <br>
+
+    <div class="shopping-bag-section">
+      <div class="normalDelivery">
+        <span>일반배송 : </span>
+        <input class="allCheck" type="checkbox" id="normal-all-check" name="allCheck">
+        <label for="normal-all-check">전체 선택</label>
+        <button class="sectionRemove" type="button" name="button">선택삭제</button>
+        <button id="moveToMorningDelivery" type="button" name="button">새벽배송으로 이동</button>
+        <br>
+        <br>
+        <table>
+          <tr>
+            <th>선택</th>
+            <th>상품 이미지</th>
+            <th>상품 이름</th>
+            <th>상품 개별 가격</th>
+            <th>상품 개수</th>
+            <th>상품 구매 가격</th>
+          </tr>
+          <tr>
+            <td colspan="5">총 가격</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="earlyMorningDelivery">
+        <span>새벽배송 : </span>
+        <input class="allCheck" type="checkbox" id="morning-all-check" name="allCheck">
+        <label for="morning-all-check">전체 선택</label>
+        <button class="sectionRemove" type="button" name="button">선택삭제</button>
+        <button id="moveToNormalDelivery" type="button" name="button">일반배송으로 이동</button>
+        <br>
+        <br>
+        <table>
+          <tr>
+            <th>선택</th>
+            <th>상품 이미지</th>
+            <th>상품 이름</th>
+            <th>상품 개별 가격</th>
+            <th>상품 개수</th>
+            <th>상품 구매 가격</th>
+          </tr>
+          <tr>
+            <td colspan="5">총 가격</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
     </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
     <div class="searching-section">
+      <label for="searching-products-name">상품 이름 : </label>
+      <input id="searching-products-name" type="text" name="searching-products-name">
+      <br>
+      <br>
+      <label for="min-price-range">가격 범위 : </label>
+      <input id="min-price-range" type="text" name="min-price-range">
+      <span> ~ </span>
+      <input id="max-price-range" type="text" name="max-price-range">
+      <br>
+      <br>
+      <button type="button" name="button">검색</button>
+      <button type="button" name="button">원래 색으로 바꾸기</button>
 
     </div>
+
+    <script type="text/javascript" src="openForm.js"></script>
   </body>
+
 </html>
