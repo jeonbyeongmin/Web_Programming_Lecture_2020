@@ -9,34 +9,41 @@
   </head>
   <body>
 
+    <!-- 장바구니에 넣을 상품을 등하는 영역 -->
     <div class="shopping-section">
-      <button class="cart-button" onclick="openForm()"><i class="material-icons">shopping_cart</i></button>
+      <button id="addPruductsButton" class="cart-button"><i class="material-icons">shopping_cart</i></button>
       <div class="form-popup" id="myForm">
-        <form action="" class="form-container">
+        <div class="form-container">
           <h1>상품 장바구니 등록</h1>
-          <label for="products-image">상품 이미지 : </label>
-          <input type="file" id="products-image" name="products-image">
+
+          <label for="productsImage">상품 이미지 : </label>
+          <input type="file" id="productsImage" name="products-image">
           <br>
-          <label for="products-name">상품 이름 : </label>
-          <input type="text" id="products-name" name="products-name" required>
+
+          <label for="productsName">상품 이름 : </label>
+          <input type="text" id="productsName" name="products-name">
           <br>
-          <label for="products-price">상품 가격 : </label>
-          <input size="10" type="text" id="products-price" name="products-price" required>
+
+          <label for="productsPrice">상품 가격 : </label>
+          <input type="text" size="10" id="productsPrice" name="products-price">
           <br>
-          <label for="products-count">상품 개수 : </label>
-          <input size="5" type="text" id="products-count" name="products-count" required>
+
+          <label for="productsCount">상품 개수 : </label>
+          <input type="text" size="5" id="productsCount" name="products-count">
           <span>최대 50이하까지 선택가능</span>
+
           <br>
-          <label for="delivery-type">배송 방법 : </label>
-          <input type="radio" id="normal-delivery" name="delivery-type" value="normal-delivery">
-          <label for="normal-delivery">일반 배송</label>
-          <input type="radio" id="early-morning-delivery" name="delivery-type" value="early-morning-delivery">
-          <label for="early-morning-delivery">새벽 배송</label>
+          <span>배송 방법 : </span>
+          <input type="radio" id="normalDelivery" class="howToDelivery" name="delivery-type" value="normalDelivery">
+          <label for="normalDelivery">일반 배송</label>
+          <input type="radio" id="earlyMorningDelivery" class="howToDelivery" name="delivery-type" value="earlyMorningDelivery">
+          <label for="earlyMorningDelivery">새벽 배송</label>
+
           <br>
           <br>
-          <button type="submit">장바구니 담기</button>
-          <button type="button" onclick="closeForm()">취소</button>
-        </form>
+          <button id="moveButtonShoppingBag" type="submit">장바구니 담기</button>
+          <button id="cancelButtonInForm" type="button">취소</button>
+        </div>
       </div>
     </div>
 
@@ -44,28 +51,37 @@
     <br>
     <br>
 
+    <!-- 장바구니 상품을 관리하는 영역 -->
     <div class="shopping-bag-section">
       <div class="normalDelivery">
         <span>일반배송 : </span>
-        <input class="allCheck" type="checkbox" id="normal-all-check" name="allCheck">
-        <label for="normal-all-check">전체 선택</label>
+        <input class="allCheck" type="checkbox" id="normalAllCheck" name="allCheck">
+        <label for="normalAllCheck">전체 선택</label>
         <button class="sectionRemove" type="button" name="button">선택삭제</button>
         <button id="moveToMorningDelivery" type="button" name="button">새벽배송으로 이동</button>
         <br>
         <br>
         <table>
-          <tr>
-            <th>선택</th>
-            <th>상품 이미지</th>
-            <th>상품 이름</th>
-            <th>상품 개별 가격</th>
-            <th>상품 개수</th>
-            <th>상품 구매 가격</th>
-          </tr>
-          <tr>
-            <td colspan="5">총 가격</td>
-            <td></td>
-          </tr>
+          <thead>
+            <tr>
+              <th>선택</th>
+              <th>상품 이미지</th>
+              <th>상품 이름</th>
+              <th>상품 개별 가격</th>
+              <th>상품 개수</th>
+              <th>상품 구매 가격</th>
+            </tr>
+          </thead>
+          <tbody id="normalDeliveryInfoTable">
+
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5">총 가격</td>
+              <td></td>
+            </tr>
+          </tfoot>
+
         </table>
       </div>
       <br>
@@ -79,7 +95,7 @@
         <button id="moveToNormalDelivery" type="button" name="button">일반배송으로 이동</button>
         <br>
         <br>
-        <table>
+        <table id="earlyMorningDeliveryInfoTable">
           <tr>
             <th>선택</th>
             <th>상품 이미지</th>
@@ -100,6 +116,8 @@
     <br>
     <br>
     <br>
+
+    <!-- 장바구니에서 원하는 상품을 검색하기 위해서 정보를 입력하는 영역 -->
 
     <div class="searching-section">
       <label for="searching-products-name">상품 이름 : </label>
@@ -117,7 +135,8 @@
 
     </div>
 
-    <script type="text/javascript" src="openForm.js"></script>
+
   </body>
+  <script type="text/javascript" src="popUpForm.js"></script>
 
 </html>

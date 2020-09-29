@@ -1,6 +1,10 @@
 
+
+/************ shopping_cart_icon ***************/
+/********* 장바구니에 넣을 상품을 등록하는 영역 *********/
+
 .shopping-section {
-  border: 3px solid #73AD21;
+  border: 3px solid #73AD21; /*테두리*/
   width: 75%;
   height: auto;
   margin: 0 auto;
@@ -16,6 +20,9 @@
   color : blue;
 }
 
+
+
+/*********** pop-up form ****************/
 
 .form-popup {
   display: none;
@@ -40,18 +47,16 @@
 }
 
 
-
 /*********** table ****************/
 
 table {
   border-collapse: collapse;
-
 }
 
-.shopping-bag tr, th, td {
+table, tr, th, td {
   border: 1px solid black;
   text-align: center;
-  font-family: "arial, sans-serif"
+  font-family: Arial, Sans-serif;
 }
 
 th, td {
