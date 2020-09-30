@@ -27,7 +27,7 @@
 .form-popup {
   display: none;
   position: fixed;
-  border-width: : 2px;
+  border-width: 2px;
   border-style: outset;
   border-radius: 5px;
   z-index: 1;

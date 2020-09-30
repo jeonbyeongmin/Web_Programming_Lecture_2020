@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-
     <!-- 장바구니에 넣을 상품을 등하는 영역 -->
     <div class="shopping-section">
       <button id="addPruductsButton" class="cart-button"><i class="material-icons">shopping_cart</i></button>
@@ -46,11 +45,9 @@
         </div>
       </div>
     </div>
-
     <br>
     <br>
     <br>
-
     <!-- 장바구니 상품을 관리하는 영역 -->
     <div class="shopping-bag-section">
       <div class="normalDelivery">
@@ -64,16 +61,15 @@
         <table>
           <thead>
             <tr>
-              <th>선택</th>
+              <th>선택</th>
               <th>상품 이미지</th>
               <th>상품 이름</th>
               <th>상품 개별 가격</th>
               <th>상품 개수</th>
-              <th>상품 구매 가격</th>
+              <th>상품 구매 가격</th>
             </tr>
           </thead>
           <tbody id="normalDeliveryInfoTable">
-
           </tbody>
           <tfoot>
             <tr>
@@ -81,7 +77,6 @@
               <td id="normalTotalPrice"></td>
             </tr>
           </tfoot>
-
         </table>
       </div>
       <br>
@@ -98,16 +93,15 @@
         <table>
           <thead>
             <tr>
-              <th>선택</th>
+              <th>선택</th>
               <th>상품 이미지</th>
               <th>상품 이름</th>
               <th>상품 개별 가격</th>
               <th>상품 개수</th>
-              <th>상품 구매 가격</th>
+              <th>상품 구매 가격</th>
             </tr>
           </thead>
           <tbody id="earlyMorningDeliveryInfoTable">
-
           </tbody>
           <tfoot>
             <tr>
@@ -115,16 +109,12 @@
               <td id="earlyMorningTotalPrice"></td>
             </tr>
           </tfoot>
-
         </table>
       </div>
     </div>
-
     <br>
     <br>
     <br>
-    <br>
-
     <!-- 장바구니에서 원하는 상품을 검색하기 위해서 정보를 입력하는 영역 -->
 
     <div class="searching-section">
@@ -133,7 +123,7 @@
       <br>
       <br>
       <label for="inputMinPrice">가격 범위 : </label>
-      <input id="\\" type="text" name="min-price-range">
+      <input id="inputMinPrice" type="text" name="min-price-range">
       <span> ~ </span>
       <input id="inputMaxPrice" type="text" name="max-price-range">
       <br>
@@ -142,9 +132,6 @@
       <button id="backToNormal" type="button" name="button">원래 색으로 바꾸기</button>
 
     </div>
-
-
+    <script src="popUpForm.js"></script>
   </body>
-  <script type="text/javascript" src="popUpForm.js"></script>
-
 </html>
