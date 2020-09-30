@@ -7,6 +7,7 @@
 let _buttonOpenForm = document.getElementById("addPruductsButton");
 let _buttonCloseForm = document.getElementById("cancelButtonInForm");
 let _buttonMoveToShoppingBag = document.getElementById("moveButtonShoppingBag");
+let _buttonNormalSectionRemove = document.getElementById("normalSectionRemove");
 
 // 유효성 검사
 var _onlyNumber = /^[0-9]*$/; // 숫자 유효성 검사를 위한 정규식
@@ -14,7 +15,7 @@ var _onlyImage = /(.*?)\.(jpg|jpeg|png)$/; // 이미지 확장자 유효성 검�
 var _onlyLetter = /\D/; // 문자 유효성 검사를 위한 정규식
 
 
-// 팝업 form 변수들
+// 팝업 변수들
 let _productsImage = document.getElementById("productsImage");
 let _productsName = document.getElementById("productsName");
 let _productsPrice = document.getElementById("productsPrice");
@@ -25,11 +26,12 @@ let _howToDelivery = document.getElementsByClassName("howToDelivery");
 // table 변수
 let _normalDeliveryInfoTable = document.getElementById("normalDeliveryInfoTable");
 let _earlyMorningDeliveryInfoTable = document.getElementById("earlyMorningDeliveryInfoTable");
-let _content = document.getElementsByClassName("content");
+let _normalContent = document.getElementsByClassName("content");
+let _totalPrice = document.getElementById("totalPrice");
+
 
 
 // check box
-let _normalCheckedList = new Array();
 let _normalCheckBox = document.getElementsByClassName("normalDeliveryInfoTableCheckBox");
 let _normalAllCheck = document.getElementById("normalAllCheck");
 
@@ -41,18 +43,19 @@ let _normalAllCheck = document.getElementById("normalAllCheck");
 
 _buttonOpenForm.addEventListener("click", openForm);
 _buttonMoveToShoppingBag.addEventListener("click", moveToShoppingBag);
-
-
-
-
-
+_buttonCloseForm.addEventListener("click", closeForm);
+_buttonNormalSectionRemove.addEventListener("click", function() {
+  deleteRow(_normalCheckBox, _normalDeliveryInfoTable);
+  sumTotalPrice(_normalCheckBox);
+  isAllCheck();
+})
 
 
 /****************************** CHECK BOX ************************************/
 
-_normalAllCheck.addEventListener("click", allCheck);
-
-
+_normalAllCheck.addEventListener("click", function() {
+  allCheck(_normalAllCheck, _normalCheckBox);
+})
 
 
 
@@ -137,12 +140,17 @@ function moveToShoppingBag(){
       addCheckbox.className = "normalDeliveryInfoTableCheckBox";
       addCheckbox.type = "checkbox";
       addCheckbox.checked = true;
+      addCheckbox.addEventListener('click', function() {
+        sumTotalPrice(_normalCheckBox);
+        isAllCheck();
+      })
       cell1.appendChild(addCheckbox);
 
 
       // cell_2 :: 상품 이미지
       var cell2 = addRow.insertCell(1);
-      cell2.innerHTML = _productsImage.value;
+      cell2.innerHTML = "<img class='photo' src='" + _productsImage.files[0].name + "'>";
+
 
       // cell_3 :: 상품 이름
       var cell3 = addRow.insertCell(2);
@@ -159,9 +167,13 @@ function moveToShoppingBag(){
       // cell_6 :: 삼품 구매 가격
       var cell6 = addRow.insertCell(5);
       cell6.innerHTML = parseInt(_productsPrice.value) * parseInt(_productsCount.value);
+      cell6.className = "allProductsPrice"
 
       // 전체선택 체크
       isAllCheck();
+      sumTotalPrice(_normalCheckBox);
+      closeForm();
+
 
     } else if (_howToDelivery[1].checked == true) {
 
@@ -188,7 +200,7 @@ function isCheckedRadioClass(target) { // radio가 체크되어 있는지 판단
 }
 
 
-
+// 전체선택이 되어있는지 확인하고 전체 체크하거나 해제하는 함수
 function isAllCheck() {
   let count = 0;
   for (var i = 0; i < _normalCheckBox.length; i++) {
@@ -196,26 +208,52 @@ function isAllCheck() {
       count++;
     }
   }
-  if (count == _content.length) {
+  if (count == _normalContent.length) {
     _normalAllCheck.checked = true;
   } else {
     _normalAllCheck.checked = false;
   }
 }
 
-function allCheck() {
+//전체선택을 누르면 해당영역의 모든 체크박스가 해제되는 함수
+function allCheck(whatTypeAllCheck, whatTypeCheckBox) {
 
-  if (_normalAllCheck.checked == false) {
-    for (var i = 0; i < _content.length; i++) {
-      if (_normalCheckBox[i].checked == true) {
-        _normalCheckBox[i].checked = false;
+  if (whatTypeAllCheck.checked == false) {
+    for (var i = 0; i < _normalContent.length; i++) {
+      if (whatTypeCheckBox[i].checked == true) {
+        whatTypeCheckBox[i].checked = false;
       }
     }
   } else { // 체크안되어 있을 때.
-    for (var i = 0; i < _content.length; i++) {
-      if (_normalCheckBox[i].checked == false) {
-        _normalCheckBox[i].checked = true;
+    for (var i = 0; i < _normalContent.length; i++) {
+      if (whatTypeCheckBox[i].checked == false) {
+        whatTypeCheckBox[i].checked = true;
       }
+    }
+  }
+  sumTotalPrice(whatTypeCheckBox);
+}
+
+
+// 총 가격을 계산해서 표시해주는 함수
+function sumTotalPrice(whatTypeCheckBox) {
+  let total = 0;
+  for (var i = 0; i < _normalContent.length; i++) {
+    if (whatTypeCheckBox[i].checked == true) {
+      total += parseInt(_normalContent[i].lastElementChild.innerText);
+    }
+  }
+  _totalPrice.innerHTML = total;
+}
+
+
+// 체크된 content가 포함된 줄을 제거하는 함수
+function deleteRow(whatTypeCheckBox, whatTypeTable){
+  for (var i = 0; i < _normalContent.length;) {
+    if (whatTypeCheckBox[i].checked == true) {
+      whatTypeTable.deleteRow(i);
+    } else {
+       i++;
     }
   }
 }

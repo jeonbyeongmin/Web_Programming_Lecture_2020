@@ -57,7 +57,7 @@
         <span>일반배송 : </span>
         <input class="allCheck" type="checkbox" id="normalAllCheck" name="allCheck">
         <label for="normalAllCheck">전체 선택</label>
-        <button class="sectionRemove" type="button" name="button">선택삭제</button>
+        <button id="normalSectionRemove" type="button" name="button">선택삭제</button>
         <button id="moveToMorningDelivery" type="button" name="button">새벽배송으로 이동</button>
         <br>
         <br>
@@ -78,7 +78,7 @@
           <tfoot>
             <tr>
               <td colspan="5">총 가격</td>
-              <td></td>
+              <td id="totalPrice"></td>
             </tr>
           </tfoot>
 
@@ -91,7 +91,7 @@
         <span>새벽배송 : </span>
         <input class="allCheck" type="checkbox" id="morning-all-check" name="allCheck">
         <label for="morning-all-check">전체 선택</label>
-        <button class="sectionRemove" type="button" name="button">선택삭제</button>
+        <button id="earlyMorningSectionRemove" type="button" name="button">선택삭제</button>
         <button id="moveToNormalDelivery" type="button" name="button">일반배송으로 이동</button>
         <br>
         <br>
