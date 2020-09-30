@@ -193,6 +193,7 @@ function moveToShoppingBag(){
       cell2.innerHTML = "<img class='photo' src='" + _productsImage.files[0].name + "'>";
 
 
+
       // cell_3 :: 상품 이름
       var cell3 = addRow.insertCell(2);
       cell3.innerHTML = _productsName.value;
@@ -207,12 +208,19 @@ function moveToShoppingBag(){
 
       // cell_6 :: 삼품 구매 가격
       var cell6 = addRow.insertCell(5);
-      cell6.innerHTML = parseInt(_productsPrice.value) * parseInt(_productsCount.value);
+      cell6.innerHTML = parseInt(cell4.innerText) * parseInt(cell5.innerText);
+
+      // 입력받은 값들 초기화
+      _productsImage.value = "";
+      _productsName.value = "";
+      _productsPrice.value = "";
+      _productsCount.value = "";
+      _howToDelivery[0].checked = false;
 
       // 전체선택 체크
       isAllCheck(_normalCheckBox, _normalAllCheck);
       sumTotalPrice(_normalCheckBox, _normalContent, _normalTotalPrice);
-
+      closeForm();
 
     } else if (_howToDelivery[1].checked == true) {
 
@@ -256,9 +264,17 @@ function moveToShoppingBag(){
       var cell6 = addRow.insertCell(5);
       cell6.innerHTML = parseInt(_productsPrice.value) * parseInt(_productsCount.value);
 
+      _productsImage.value = "";
+      _productsName.value = "";
+      _productsPrice.value = "";
+      _productsCount.value = "";
+      _howToDelivery[1].checked = false;
+
       // 전체선택 체크
       sumTotalPrice(_earlyMorningCheckBox, _earlyMorningContent, _earlyMorningTotalPrice);
       isAllCheck(_earlyMorningCheckBox, _earlyMorningAllCheck);
+      closeForm();
+
     }
   }
 }
