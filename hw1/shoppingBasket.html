@@ -55,7 +55,7 @@
     <div class="shopping-bag-section">
       <div class="normalDelivery">
         <span>일반배송 : </span>
-        <input class="allCheck" type="checkbox" id="normalAllCheck" name="allCheck">
+        <input class="allCheck" type="checkbox" id="normalAllCheck" name="normalAllCheck">
         <label for="normalAllCheck">전체 선택</label>
         <button id="normalSectionRemove" type="button" name="button">선택삭제</button>
         <button id="moveToMorningDelivery" type="button" name="button">새벽배송으로 이동</button>
@@ -78,7 +78,7 @@
           <tfoot>
             <tr>
               <td colspan="5">총 가격</td>
-              <td id="totalPrice"></td>
+              <td id="normalTotalPrice"></td>
             </tr>
           </tfoot>
 
@@ -89,25 +89,33 @@
       <br>
       <div class="earlyMorningDelivery">
         <span>새벽배송 : </span>
-        <input class="allCheck" type="checkbox" id="morning-all-check" name="allCheck">
-        <label for="morning-all-check">전체 선택</label>
+        <input class="allCheck" type="checkbox" id="earlyMorningAllCheck" name="earlyMorningAllCheck">
+        <label for="earlyMorningAllCheck">전체 선택</label>
         <button id="earlyMorningSectionRemove" type="button" name="button">선택삭제</button>
         <button id="moveToNormalDelivery" type="button" name="button">일반배송으로 이동</button>
         <br>
         <br>
-        <table id="earlyMorningDeliveryInfoTable">
-          <tr>
-            <th>선택</th>
-            <th>상품 이미지</th>
-            <th>상품 이름</th>
-            <th>상품 개별 가격</th>
-            <th>상품 개수</th>
-            <th>상품 구매 가격</th>
-          </tr>
-          <tr>
-            <td colspan="5">총 가격</td>
-            <td></td>
-          </tr>
+        <table>
+          <thead>
+            <tr>
+              <th>선택</th>
+              <th>상품 이미지</th>
+              <th>상품 이름</th>
+              <th>상품 개별 가격</th>
+              <th>상품 개수</th>
+              <th>상품 구매 가격</th>
+            </tr>
+          </thead>
+          <tbody id="earlyMorningDeliveryInfoTable">
+
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5">총 가격</td>
+              <td id="earlyMorningTotalPrice"></td>
+            </tr>
+          </tfoot>
+
         </table>
       </div>
     </div>
