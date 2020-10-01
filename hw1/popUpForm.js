@@ -24,7 +24,7 @@ let _textBoxInputMaxPrice = document.getElementById("inputMaxPrice");
 // 유효성 검사
 var _onlyNumber = /^[0-9]*$/; // 숫자 유효성 검사를 위한 정규식
 var _onlyImage = /(.*?)\.(jpg|jpeg|png)$/; // 이미지 확장자 유효성 검사를 위한 정규식
-var _onlyLetter = /\D/; // 문자 유효성 검사를 위한 정규식
+var _onlyLetter = /^[^0-9]*$/; // 문자 유효성 검사를 위한 정규식
 
 
 // 팝업 변수들
@@ -112,6 +112,12 @@ function openForm() {
 
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
+  _productsImage.value = "";
+  _productsName.value = "";
+  _productsPrice.value = "";
+  _productsCount.value = "";
+  _howToDelivery[0].checked = false;
+  _howToDelivery[1].checked = false;
 }
 
 function verificationInfo() { // 주어진 정보의 유효성 검사 실시
@@ -131,7 +137,7 @@ function verificationInfo() { // 주어진 정보의 유효성 검사 실시
     alert("상품 이름을 입력해주세요.");
     isOK = false;
   } else if (!validator(_onlyLetter, _productsName)) {
-    alert("문자만 입력하세요");
+    alert("문자로 된 상품 이름을 입력하세요");
     isOK = false;
   }
 
@@ -140,10 +146,11 @@ function verificationInfo() { // 주어진 정보의 유효성 검사 실시
     alert("상품가격을 입력해주세요.");
     isOK = false;
   } else if (!validator(_onlyNumber, _productsPrice)) {
-    alert("숫자를 입력하세요.");
+    alert("상품가격에 숫자를 입력하세요.");
     isOK = false;
   } else if (_productsPrice.value < 1000) { // String --> 정수로의 자동 형변환이 되어 비교를 하게 됨.
-    alert("1000원 이상으로 입력하시오.");
+    alert("상품가격을 1000원 이상으로 입력하시오.");
+    _productsPrice.value = "";
     isOK = false;
   }
 
@@ -151,11 +158,12 @@ function verificationInfo() { // 주어진 정보의 유효성 검사 실시
   if (_productsCount.value == "") {
     alert("상품개수을 입력해주세요.");
     isOK = false;
-  } else if (!validator(_onlyNumber, _productsPrice)) {
-    alert("숫자를 입력하세요.");
+  } else if (!validator(_onlyNumber, _productsCount)) {
+    alert("상품개수에 숫자를 입력하세요.");
     isOK = false;
-  } else if (_productsCount.value > 50 || _productsCount.value == "0") {
-    alert("최대 50개 이하로 선택하시오.");
+  } else if (_productsCount.value > 50 || _productsCount.value <= 0) {
+    alert("최소 1개에서 최대 50개 이하로 선택하시오.");
+    _productsCount.value = "";
     isOK = false;
   }
 
@@ -474,10 +482,10 @@ function searchProducts() {
     }
     if (_normalContent[i].children[2].innerText.includes(_textBoxInputProductsName.value) && _textBoxInputMinPrice.value == "" && _textBoxInputMaxPrice.value == "") { // 이름만 입력했을 때.
 
-      _normalContent[i].children[2].style.color = '#ff0000';
-      _normalContent[i].children[3].style.color = '#ff0000';
-      _normalContent[i].children[4].style.color = '#ff0000';
-      _normalContent[i].children[5].style.color = '#ff0000';
+      _normalContent[i].children[2].style.color = 'red';
+      _normalContent[i].children[3].style.color = 'red';
+      _normalContent[i].children[4].style.color = 'red';
+      _normalContent[i].children[5].style.color = 'red';
 
       _normalContent[i].children[2].style.fontSize = '20px';
       _normalContent[i].children[3].style.fontSize = '20px';
@@ -491,10 +499,10 @@ function searchProducts() {
 
     } else if (_normalContent[i].children[2].innerText.includes(_textBoxInputProductsName.value) && parseInt(_textBoxInputMinPrice.value) <= parseInt(_normalContent[i].children[3].innerText) && _textBoxInputMaxPrice.value == "") { // 최소값만 입력했을 때.
 
-      _normalContent[i].children[2].style.color = '#ff0000';
-      _normalContent[i].children[3].style.color = '#ff0000';
-      _normalContent[i].children[4].style.color = '#ff0000';
-      _normalContent[i].children[5].style.color = '#ff0000';
+      _normalContent[i].children[2].style.color = 'red';
+      _normalContent[i].children[3].style.color = 'red';
+      _normalContent[i].children[4].style.color = 'red';
+      _normalContent[i].children[5].style.color = 'red';
 
       _normalContent[i].children[2].style.fontSize = '20px';
       _normalContent[i].children[3].style.fontSize = '20px';
@@ -508,10 +516,10 @@ function searchProducts() {
 
     } else if (_normalContent[i].children[2].innerText.includes(_textBoxInputProductsName.value) && _textBoxInputMinPrice.value == "" && parseInt(_textBoxInputMaxPrice.value) >= parseInt(_normalContent[i].children[3].innerText)) { //최대값만 입력했을 때
 
-      _normalContent[i].children[2].style.color = '#ff0000';
-      _normalContent[i].children[3].style.color = '#ff0000';
-      _normalContent[i].children[4].style.color = '#ff0000';
-      _normalContent[i].children[5].style.color = '#ff0000';
+      _normalContent[i].children[2].style.color = 'red';
+      _normalContent[i].children[3].style.color = 'red';
+      _normalContent[i].children[4].style.color = 'red';
+      _normalContent[i].children[5].style.color = 'red';
 
       _normalContent[i].children[2].style.fontSize = '20px';
       _normalContent[i].children[3].style.fontSize = '20px';
@@ -525,10 +533,10 @@ function searchProducts() {
 
     } else if (_normalContent[i].children[2].innerText.includes(_textBoxInputProductsName.value) && parseInt(_textBoxInputMinPrice.value) <= parseInt(_normalContent[i].children[3].innerText) && parseInt(_textBoxInputMaxPrice.value) >= parseInt(_normalContent[i].children[3].innerText)) { // 세개다 입력했을 때
 
-      _normalContent[i].children[2].style.color = '#ff0000';
-      _normalContent[i].children[3].style.color = '#ff0000';
-      _normalContent[i].children[4].style.color = '#ff0000';
-      _normalContent[i].children[5].style.color = '#ff0000';
+      _normalContent[i].children[2].style.color = 'red';
+      _normalContent[i].children[3].style.color = 'red';
+      _normalContent[i].children[4].style.color = 'red';
+      _normalContent[i].children[5].style.color = 'red';
 
       _normalContent[i].children[2].style.fontSize = '20px';
       _normalContent[i].children[3].style.fontSize = '20px';
@@ -551,10 +559,10 @@ function searchProducts() {
 
     if (_earlyMorningContent[i].children[2].innerText.includes(_textBoxInputProductsName.value) && _textBoxInputMinPrice.value == "" && _textBoxInputMaxPrice.value == "") { // 이름만 입력
 
-      _earlyMorningContent[i].children[2].style.color = '#ff0000';
-      _earlyMorningContent[i].children[3].style.color = '#ff0000';
-      _earlyMorningContent[i].children[4].style.color = '#ff0000';
-      _earlyMorningContent[i].children[5].style.color = '#ff0000';
+      _earlyMorningContent[i].children[2].style.color = 'red';
+      _earlyMorningContent[i].children[3].style.color = 'red';
+      _earlyMorningContent[i].children[4].style.color = 'red';
+      _earlyMorningContent[i].children[5].style.color = 'red';
 
       _earlyMorningContent[i].children[2].style.fontSize = '20px';
       _earlyMorningContent[i].children[3].style.fontSize = '20px';
@@ -568,10 +576,10 @@ function searchProducts() {
 
     } else if (_earlyMorningContent[i].children[2].innerText.includes(_textBoxInputProductsName.value) && parseInt(_textBoxInputMinPrice.value) <= parseInt(_earlyMorningContent[i].children[3].innerText) && _textBoxInputMaxPrice.value == "") { // 최소값만 입력했을 때.
 
-      _earlyMorningContent[i].children[2].style.color = '#ff0000';
-      _earlyMorningContent[i].children[3].style.color = '#ff0000';
-      _earlyMorningContent[i].children[4].style.color = '#ff0000';
-      _earlyMorningContent[i].children[5].style.color = '#ff0000';
+      _earlyMorningContent[i].children[2].style.color = 'red';
+      _earlyMorningContent[i].children[3].style.color = 'red';
+      _earlyMorningContent[i].children[4].style.color = 'red';
+      _earlyMorningContent[i].children[5].style.color = 'red';
 
       _earlyMorningContent[i].children[2].style.fontSize = '20px';
       _earlyMorningContent[i].children[3].style.fontSize = '20px';
@@ -585,10 +593,10 @@ function searchProducts() {
 
     } else if (_earlyMorningContent[i].children[2].innerText.includes(_textBoxInputProductsName.value) && _textBoxInputMinPrice.value == "" && parseInt(_textBoxInputMaxPrice.value) >= parseInt(_earlyMorningContent[i].children[3].innerText)) { //최대값만 입력했을 때
 
-      _earlyMorningContent[i].children[2].style.color = '#ff0000';
-      _earlyMorningContent[i].children[3].style.color = '#ff0000';
-      _earlyMorningContent[i].children[4].style.color = '#ff0000';
-      _earlyMorningContent[i].children[5].style.color = '#ff0000';
+      _earlyMorningContent[i].children[2].style.color = 'red';
+      _earlyMorningContent[i].children[3].style.color = 'red';
+      _earlyMorningContent[i].children[4].style.color = 'red';
+      _earlyMorningContent[i].children[5].style.color = 'red';
 
       _earlyMorningContent[i].children[2].style.fontSize = '20px';
       _earlyMorningContent[i].children[3].style.fontSize = '20px';
@@ -602,10 +610,10 @@ function searchProducts() {
 
     } else if (_earlyMorningContent[i].children[2].innerText.includes(_textBoxInputProductsName.value) && parseInt(_textBoxInputMinPrice.value) <= parseInt(_earlyMorningContent[i].children[3].innerText) && parseInt(_textBoxInputMaxPrice.value) >= parseInt(_earlyMorningContent[i].children[3].innerText)) { // 세개다 입력했을 때
 
-      _earlyMorningContent[i].children[2].style.color = '#ff0000';
-      _earlyMorningContent[i].children[3].style.color = '#ff0000';
-      _earlyMorningContent[i].children[4].style.color = '#ff0000';
-      _earlyMorningContent[i].children[5].style.color = '#ff0000';
+      _earlyMorningContent[i].children[2].style.color = 'red';
+      _earlyMorningContent[i].children[3].style.color = 'red';
+      _earlyMorningContent[i].children[4].style.color = 'red';
+      _earlyMorningContent[i].children[5].style.color = 'red';
 
       _earlyMorningContent[i].children[2].style.fontSize = '20px';
       _earlyMorningContent[i].children[3].style.fontSize = '20px';
@@ -624,37 +632,37 @@ function searchProducts() {
 // 검색하여 바꾼 스타일을 다시 되돌리는 함수 (모두 default값으로 초기값)
 function backToNormal() {
   for (var i = 0; i < _normalContent.length; i++) {
-    _normalContent[i].children[2].style.color = 'black';
-    _normalContent[i].children[3].style.color = 'black';
-    _normalContent[i].children[4].style.color = 'black';
-    _normalContent[i].children[5].style.color = 'black';
+    _normalContent[i].children[2].style.removeProperty('color');
+    _normalContent[i].children[3].style.removeProperty('color');
+    _normalContent[i].children[4].style.removeProperty('color');
+    _normalContent[i].children[5].style.removeProperty('color');
 
-    _normalContent[i].children[2].style.fontSize = '16px';
-    _normalContent[i].children[3].style.fontSize = '16px';
-    _normalContent[i].children[4].style.fontSize = '16px';
-    _normalContent[i].children[5].style.fontSize = '16px';
+    _normalContent[i].children[2].style.removeProperty('font-size');
+    _normalContent[i].children[3].style.removeProperty('font-size');
+    _normalContent[i].children[4].style.removeProperty('font-size');
+    _normalContent[i].children[5].style.removeProperty('font-size');
 
-    _normalContent[i].children[2].style.fontWeight = '400';
-    _normalContent[i].children[3].style.fontWeight = '400';
-    _normalContent[i].children[4].style.fontWeight = '400';
-    _normalContent[i].children[5].style.fontWeight = '400';
+    _normalContent[i].children[2].style.removeProperty('font-weight');
+    _normalContent[i].children[3].style.removeProperty('font-weight');
+    _normalContent[i].children[4].style.removeProperty('font-weight');
+    _normalContent[i].children[5].style.removeProperty('font-weight');
 
   }
   for (var i = 0; i < _earlyMorningContent.length; i++) {
-    _earlyMorningContent[i].children[2].style.color = 'black';
-    _earlyMorningContent[i].children[3].style.color = 'black';
-    _earlyMorningContent[i].children[4].style.color = 'black';
-    _earlyMorningContent[i].children[5].style.color = 'black';
+    _earlyMorningContent[i].children[2].style.removeProperty('color');
+    _earlyMorningContent[i].children[3].style.removeProperty('color');
+    _earlyMorningContent[i].children[4].style.removeProperty('color');
+    _earlyMorningContent[i].children[5].style.removeProperty('color');
 
-    _earlyMorningContent[i].children[2].style.fontSize = '16px';
-    _earlyMorningContent[i].children[3].style.fontSize = '16px';
-    _earlyMorningContent[i].children[4].style.fontSize = '16px';
-    _earlyMorningContent[i].children[5].style.fontSize = '16px';
+    _earlyMorningContent[i].children[2].style.removeProperty('font-size');
+    _earlyMorningContent[i].children[3].style.removeProperty('font-size');
+    _earlyMorningContent[i].children[4].style.removeProperty('font-size');
+    _earlyMorningContent[i].children[5].style.removeProperty('font-size');
 
-    _earlyMorningContent[i].children[2].style.fontWeight = '400';
-    _earlyMorningContent[i].children[3].style.fontWeight = '400';
-    _earlyMorningContent[i].children[4].style.fontWeight = '400';
-    _earlyMorningContent[i].children[5].style.fontWeight = '400';
+    _earlyMorningContent[i].children[2].style.removeProperty('font-weight');
+    _earlyMorningContent[i].children[3].style.removeProperty('font-weight');
+    _earlyMorningContent[i].children[4].style.removeProperty('font-weight');
+    _earlyMorningContent[i].children[5].style.removeProperty('font-weight');
 
   }
 }
