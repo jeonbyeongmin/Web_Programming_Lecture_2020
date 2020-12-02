@@ -1,0 +1,113 @@
+
+/* header */
+
+#logoutButton, #joinButton, #currentId{
+    float: right;
+    margin-right: 10px;
+}
+
+#currentId {
+    padding-right: 10px;
+}
+
+
+
+
+/*table*/
+
+#yearMonth {
+    width: 100%;
+    text-align: center;
+}
+
+#calendar {
+    width: 100%;
+}
+#calendar,.calendarRow, .calendarRow td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#week {
+    height: 20px;
+}
+
+ #week td {
+    text-align: center;
+}
+
+#weekContent {
+    height: 300px;
+}
+
+.day {
+    color: red;
+}
+
+
+
+/* join form */
+
+#joinFormContainer {
+    display: none;
+    width: 300px;
+    height: 200px;
+    position: fixed;
+    background-color: orange;
+    left: 50%;
+    top: 50%;
+    margin-top: -150px;
+    margin-left: -100px;
+    
+    border: 3px outset;
+    border-radius: 5px;
+}
+#joinFormWrap {
+    position: relative;
+}
+#joinFormTable {
+    position: absolute;
+    left: 40px;
+    top: 65px;
+    width: 200px;
+}
+
+
+/* add form */
+
+#addFormContainer {
+    display: none;
+    width: 500px;
+    height: 200px;
+    position: fixed;
+    background-color: rgb(124, 171, 209);
+    left: 50%;
+    top: 50%;
+    margin-top: -150px;
+    margin-left: -200px;
+    
+    border: 3px outset;
+    border-radius: 5px;
+}
+#addFormWrap {
+    position: relative;
+}
+
+#addFormTable {
+    position: absolute;
+    left: 40px;
+    top: 50px;
+    width: 400px;
+}
+
+
+/* Task Box */
+
+.taskBox {
+    border: 1px solid black;
+    background-color: skyblue;
+    margin: 5px;
+    padding: 5px;
+    height: 30px;
+    line-height: 30px;
+}
