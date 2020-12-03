@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10주차 퀴즈 전병민 201702068</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="startBT">Start</button>
+    <span>Timer : </span>
+    <span id="result"></span>
+    <br>
+    <br>
+    <label for="file">이미지 파일 선택</label>
+    <input type="file" id="file">
+    <br>
+    <br>
+    <button id="addIMG" disabled>이미지 추가</button>
+    <div id="images"></div>
+    <br>
+    <br>
+    <p>A 바구니</p>
+    <div id="a" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <br>
+    <p>B 바구니</p>
+    <div id="b" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <script src="js.js"></script>
+
+</body>
+</html>

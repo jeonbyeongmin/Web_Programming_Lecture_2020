@@ -11,38 +11,36 @@
     <!-- 장바구니에 넣을 상품을 등하는 영역 -->
     <div class="shopping-section">
       <button id="addPruductsButton" class="cart-button"><i class="material-icons">shopping_cart</i></button>
-      <div class="form-popup" id="myForm">
-        <div class="form-container">
-          <h1>상품 장바구니 등록</h1>
+      <div class="form-container" id="myForm">
+        <h1>상품 장바구니 등록</h1>
 
-          <label for="productsImage">상품 이미지 : </label>
-          <input type="file" id="productsImage" name="products-image">
-          <br>
+        <label for="productsImage">상품 이미지 : </label>
+        <input type="file" id="productsImage" name="products-image">
+        <br>
 
-          <label for="productsName">상품 이름 : </label>
-          <input type="text" id="productsName" name="products-name">
-          <br>
+        <label for="productsName">상품 이름 : </label>
+        <input type="text" id="productsName" name="products-name">
+        <br>
 
-          <label for="productsPrice">상품 가격 : </label>
-          <input type="text" size="10" id="productsPrice" name="products-price">
-          <br>
+        <label for="productsPrice">상품 가격 : </label>
+        <input type="text" size="10" id="productsPrice" name="products-price">
+        <br>
 
-          <label for="productsCount">상품 개수 : </label>
-          <input type="text" size="5" id="productsCount" name="products-count">
-          <span>최대 50이하까지 선택가능</span>
+        <label for="productsCount">상품 개수 : </label>
+        <input type="text" size="5" id="productsCount" name="products-count">
+        <span>최대 50이하까지 선택가능</span>
 
-          <br>
-          <span>배송 방법 : </span>
-          <input type="radio" id="normalDelivery" class="howToDelivery" name="delivery-type" value="normalDelivery">
-          <label for="normalDelivery">일반 배송</label>
-          <input type="radio" id="earlyMorningDelivery" class="howToDelivery" name="delivery-type" value="earlyMorningDelivery">
-          <label for="earlyMorningDelivery">새벽 배송</label>
+        <br>
+        <span>배송 방법 : </span>
+        <input type="radio" id="normalDelivery" class="howToDelivery" name="delivery-type" value="normalDelivery">
+        <label for="normalDelivery">일반 배송</label>
+        <input type="radio" id="earlyMorningDelivery" class="howToDelivery" name="delivery-type" value="earlyMorningDelivery">
+        <label for="earlyMorningDelivery">새벽 배송</label>
 
-          <br>
-          <br>
-          <button id="moveButtonShoppingBag" type="submit">장바구니 담기</button>
-          <button id="cancelButtonInForm" type="button">취소</button>
-        </div>
+        <br>
+        <br>
+        <button id="moveButtonShoppingBag" type="submit">장바구니 담기</button>
+        <button id="cancelButtonInForm" type="button">취소</button>
       </div>
     </div>
     <br>

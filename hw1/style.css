@@ -23,18 +23,17 @@
 
 /*********** pop-up ****************/
 
-.form-popup {
+
+.form-container {
+
+  width: 400px;
+  height: 250px;
   display: none;
   position: fixed;
   border-width: 2px;
   border-style: outset;
   border-radius: 5px;
   z-index: 1;
-}
-
-.form-container {
-  width: 400px;
-  height: 250px;
   padding: 30px;
   background-color: skyblue;
 }
