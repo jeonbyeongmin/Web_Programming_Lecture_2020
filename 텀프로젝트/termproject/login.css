@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+/* 로그인 박스 루트 div */
+.container{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 로그인 버튼 */
+#loginButton {
+    color: dodgerblue;
+    background-color: white;
+    border: none;
+    float: right;
+}
+
+/* 로그인 버튼 : hover */
+#loginButton:hover {
+    color: blue;
+}
+
+/* 회원가입 버튼 */
+#signUpButton {
+    color: dodgerblue;
+    background-color: white;
+    border: none; 
+    float: right;
+}
+
+/* 회원가입 버튼 : hover */
+#signUpButton:hover {
+    color: blue;
+}
