@@ -1,0 +1,10 @@
+#box {
+    height: 700px;
+    width: 800px;
+    border: 1px solid black;
+}
+#video {
+    width: 700px;
+    height: 500px;
+    display: none;
+}
